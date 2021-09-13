@@ -62,4 +62,10 @@ public class StateCensusAnalyserTest {
 		}
 	}
 	
+	@Test
+	public void givenStateCsv_WhenLoaded_ShouldReturnSize() throws IndianStateCensusExeption {
+		stateCensusAnalyser = new StateCensusAnalyser();
+		Integer result = stateCensusAnalyser.loadingData("State");
+		Assert.assertEquals((Integer)37, result);
+	}
 }
