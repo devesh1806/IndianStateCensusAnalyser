@@ -5,9 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
 
+import com.indianstatecensusanalyser.IndianStateCensusExeption.ExceptionType;
 import com.opencsv.CSVReader;
 
 public class StateCensusAnalyser {
@@ -27,11 +29,16 @@ public class StateCensusAnalyser {
 		            String areaInSqKm = rotate.next();
 		            String densityPerSqKm = rotate.next();
 		            if (!population.equals("Population")) stateCensusArray.add(new CSVStateCensus(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
-			});
+		            else if ((state.equals("State") && population.equals("Population") && areaInSqKm.equals("AreaInSqKm") && densityPerSqKm.equals("DensityPerSqKm"))!=true) {
+		            	throw new InputMismatchException("Wrong Header name");
+		            }
+				});
 			reader.close();
 		}catch(IOException e) {
 			throw new IndianStateCensusExeption(e.getMessage(), IndianStateCensusExeption.ExceptionType.File_Not_Found);
 		}catch(IllegalStateException e) {
+			throw new IndianStateCensusExeption(e.getMessage(), IndianStateCensusExeption.ExceptionType.Parse_Error);
+		}catch(InputMismatchException e) {
 			throw new IndianStateCensusExeption(e.getMessage(), IndianStateCensusExeption.ExceptionType.Parse_Error);
 		}
 		
