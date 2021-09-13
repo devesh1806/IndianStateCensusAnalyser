@@ -14,7 +14,7 @@ public class StateCensusAnalyserTest {
 			Integer result = stateCensusAnalyser.loadingData();
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
-			e.printStackTrace();
+			e.printStackTrace();e.getMessage();
 		}
 	}
 	

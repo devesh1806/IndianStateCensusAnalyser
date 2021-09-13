@@ -16,19 +16,19 @@ public class StateCensusAnalyser {
 	public static List<CSVStateCensus> stateCensusArray = new ArrayList<>();
 
 	public int loadingData() throws IndianStateCensusExeption {
-		try (
-				FileReader readerFile = new FileReader(PathName); 
+		try {
+				FileReader readerFile = new FileReader(PathName);
 				CSVReader reader = new CSVReader(readerFile);
-			){
 				List<String[]> records = reader.readAll();
 				records.stream().forEach(n->{
-				Iterator<String> rotate = Arrays.stream(n).iterator();
-				String state = rotate.next();
-	            String population = rotate.next();
-	            String areaInSqKm = rotate.next();
-	            String densityPerSqKm = rotate.next();
-	            if (!population.equals("Population")) stateCensusArray.add(new CSVStateCensus(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
+					Iterator<String> rotate = Arrays.stream(n).iterator();
+					String state = rotate.next();
+		            String population = rotate.next();
+		            String areaInSqKm = rotate.next();
+		            String densityPerSqKm = rotate.next();
+		            if (!population.equals("Population")) stateCensusArray.add(new CSVStateCensus(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
 			});
+			reader.close();
 		}catch(IOException e) {
 			throw new IndianStateCensusExeption(e.getMessage(), IndianStateCensusExeption.ExceptionType.File_Not_Found);
 		}catch(IllegalStateException e) {
