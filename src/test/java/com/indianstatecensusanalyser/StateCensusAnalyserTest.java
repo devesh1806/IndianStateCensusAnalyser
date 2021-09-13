@@ -68,4 +68,15 @@ public class StateCensusAnalyserTest {
 		Integer result = stateCensusAnalyser.loadingData("State");
 		Assert.assertEquals((Integer)37, result);
 	}
+	
+	@Test
+	public void givenStateCsv_WhenLoadedIfIncorrectRaiseException_ShouldReturnException() {
+		try {
+			stateCensusAnalyser = new StateCensusAnalyser();
+			Integer result = stateCensusAnalyser.loadingData("State");
+			Assert.assertEquals((Integer)37, result);
+		}catch(IndianStateCensusExeption e) {
+			e.printStackTrace();e.getMessage();
+		}
+	}
 }
