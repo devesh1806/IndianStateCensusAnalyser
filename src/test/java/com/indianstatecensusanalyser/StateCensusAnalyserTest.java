@@ -9,10 +9,15 @@ public class StateCensusAnalyserTest {
 	
 	@Test
 	public void givenCsv_WhenLoaded_ShouldReturnSize() {
-		
-		stateCensusAnalyser = new StateCensusAnalyser();
-		Integer result = stateCensusAnalyser.loadingData();
-		Assert.assertEquals((Integer)29, result);
+		try {
+			stateCensusAnalyser = new StateCensusAnalyser();
+			Integer result = stateCensusAnalyser.loadingData();
+			Assert.assertEquals((Integer)29, result);
+		}catch(IndianStateCensusExeption e) {
+			e.printStackTrace();
+		}
 	}
+	
+	
 	
 }
