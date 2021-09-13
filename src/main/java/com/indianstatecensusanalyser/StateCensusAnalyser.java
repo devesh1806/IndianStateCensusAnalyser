@@ -50,7 +50,7 @@ public class StateCensusAnalyser {
         String population = rotate.next();
         String areaInSqKm = rotate.next();
         String densityPerSqKm = rotate.next();
-        if (!population.equals("Population")) stateCensusArray.add(new CSVStateCensus(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
+        if (!state.equals("State") && !population.equals("Population") && !areaInSqKm.equals("AreaInSqKm") && !densityPerSqKm.equals("DensityPerSqKm")) stateCensusArray.add(new CSVStateCensus(state, Long.parseLong(population), Long.parseLong(areaInSqKm), Integer.parseInt(densityPerSqKm)));
         else if ((state.equals("State") && population.equals("Population") && areaInSqKm.equals("AreaInSqKm") && densityPerSqKm.equals("DensityPerSqKm"))!=true) {
         	throw new InputMismatchException("Wrong Header name");
         }
@@ -61,6 +61,9 @@ public class StateCensusAnalyser {
             String stateName = rotate.next();
             String tin = rotate.next();
             String stateCode = rotate.next();
-            if (!stateName.equals("State Name")) stateArray.add(new CSVState(Integer.parseInt(srNo), stateName, tin, stateCode));
+            if (!srNo.equals("SrNo") && !stateName.equals("State Name") && !tin.equals("TIN") && !stateCode.equals("StateCode") ) stateArray.add(new CSVState(Integer.parseInt(srNo), stateName, tin, stateCode));
+            else if ((srNo.equals("SrNo") && stateName.equals("State Name") && tin.equals("TIN") && stateCode.equals("StateCode")) != true ) {
+            	throw new InputMismatchException("Wrong Header name");
+            }
 	}
 }
