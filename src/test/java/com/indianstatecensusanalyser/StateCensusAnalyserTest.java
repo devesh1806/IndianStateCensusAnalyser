@@ -90,4 +90,15 @@ public class StateCensusAnalyserTest {
 			e.printStackTrace();e.getMessage();
 		}
 	}
+	
+	@Test
+	public void givenStateCsv_WhenLoadedIfIncorrectDelimiterRaiseException_ShouldReturnException() {
+		try {
+			stateCensusAnalyser = new StateCensusAnalyser();
+			Integer result = stateCensusAnalyser.loadingData("State");
+			Assert.assertEquals((Integer)37, result);
+		}catch(IndianStateCensusExeption e) {
+			e.printStackTrace();e.getMessage();
+		}
+	}
 }
