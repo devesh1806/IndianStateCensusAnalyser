@@ -11,7 +11,7 @@ public class StateCensusAnalyserTest {
 	public void givenCsv_WhenLoaded_ShouldReturnSize() {
 		try {
 			stateCensusAnalyser = new StateCensusAnalyser();
-			Integer result = stateCensusAnalyser.loadingData();
+			Integer result = stateCensusAnalyser.loadingData("Census");
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
 			e.printStackTrace();e.getMessage();
@@ -22,7 +22,7 @@ public class StateCensusAnalyserTest {
 	public void givenCsv_WhenLoadedIfIncorrectRaiseException_ShouldReturnException() {
 		try {
 			stateCensusAnalyser = new StateCensusAnalyser();
-			Integer result = stateCensusAnalyser.loadingData();
+			Integer result = stateCensusAnalyser.loadingData("Census");
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
 			e.printStackTrace();e.getMessage();
@@ -33,7 +33,7 @@ public class StateCensusAnalyserTest {
 	public void givenCsv_WhenLoadedIfIncorrectTypeRaiseException_ShouldReturnException() {
 		try {
 			stateCensusAnalyser = new StateCensusAnalyser();
-			Integer result = stateCensusAnalyser.loadingData();
+			Integer result = stateCensusAnalyser.loadingData("Census");
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
 			e.printStackTrace();e.getMessage();
@@ -44,7 +44,7 @@ public class StateCensusAnalyserTest {
 	public void givenCsv_WhenLoadedIfIncorrectDelimiterRaiseException_ShouldReturnException() {
 		try {
 			stateCensusAnalyser = new StateCensusAnalyser();
-			Integer result = stateCensusAnalyser.loadingData();
+			Integer result = stateCensusAnalyser.loadingData("Census");
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
 			e.printStackTrace();e.getMessage();
@@ -55,10 +55,11 @@ public class StateCensusAnalyserTest {
 	public void givenCsv_WhenLoadedIfIncorrectHeaderRaiseException_ShouldReturnException() {
 		try {
 			stateCensusAnalyser = new StateCensusAnalyser();
-			Integer result = stateCensusAnalyser.loadingData();
+			Integer result = stateCensusAnalyser.loadingData("Census");
 			Assert.assertEquals((Integer)29, result);
 		}catch(IndianStateCensusExeption e) {
 			e.printStackTrace();e.getMessage();
 		}
 	}
+	
 }
