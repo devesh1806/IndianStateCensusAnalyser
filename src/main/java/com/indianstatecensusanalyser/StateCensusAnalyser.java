@@ -34,6 +34,7 @@ public class StateCensusAnalyser {
 		}catch(IllegalStateException e) {
 			throw new IndianStateCensusExeption(e.getMessage(), IndianStateCensusExeption.ExceptionType.Parse_Error);
 		}
+		
 		return stateCensusArray.size();
 	}
 }

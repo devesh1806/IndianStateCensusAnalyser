@@ -6,7 +6,6 @@ public class CSVStateCensus {
     public long areaInSqKm;
     public Integer densityPerSqKm;
 
-
     public CSVStateCensus() {}
     
     public CSVStateCensus(String state, long population, long areaInSqKm, Integer densityPerSqKm) {
@@ -14,10 +13,5 @@ public class CSVStateCensus {
         this.population = population;
         this.areaInSqKm = areaInSqKm;
         this.densityPerSqKm = densityPerSqKm;
-    }
-    
-    @Override
-    public String toString() {
-    	return state +" " +population+" " +areaInSqKm+" "+densityPerSqKm; 
     }
 }
